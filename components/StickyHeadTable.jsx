@@ -2,14 +2,28 @@ import { useState, useMemo } from "react";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
+import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import data from "../data/data.json";
+import { styled } from "@mui/material/styles";
 
 const rowsLength = data.rows.length;
+
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: "#6A4923",
+    color: theme.palette.common.white,
+    fontWeight: "bold",
+    fontSize: "1rem",
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: "1rem",
+    maxHeight: '1vh',
+  },
+}));
 
 function getDayInMonth(year, month) {
   let date = new Date(year, month, 1);
@@ -44,27 +58,28 @@ export default function StickyHeadTable() {
     setPageIndex(0);
   };
 
-  return (
-    <Paper sx={{ width: "100%", overflow: "hidden" }}>
+  return ( 
+    <div className="sticky-head-table">
+      <Paper sx={{ width: "100%", overflow: "hidden" }}>
       <TableContainer>
         <Table stickyHeader aria-label="sticky table">
-          <TableHead>
+          <TableHead style={{ maxHeight: '10vh' }}>
             <TableRow>
               {daysIn2025Sep.map((day) => (
-                <TableCell style={{backgroundColor:"#6A4923", color: "white", fontWeight: "bold", fontSize: "18px"}} key={day.getDate()} align="center" colSpan={1}>
+                <StyledTableCell style={{backgroundColor:"#6A4923", color: "white", fontWeight: "bold"}} key={day.getDate()} align="center" colSpan={1}>
                   {day.getDate()}
-                </TableCell>
+                </StyledTableCell>
               ))}
             </TableRow>
             <TableRow>
               {daysIn2025Sep.map((day) => {
                 const weekDay = ["CN", "T2", "T3", "T4", "T5", "T6", "T7"];
                 return (
-                  <TableCell key={day.getDay()} align="center"
-                  style={day.getDay() === 0 || day.getDay() === 6 ? {backgroundColor: 'rgba(240, 115, 32, 0.6)', fontWeight: "bold", fontSize: "18px"} : {backgroundColor: "#6A4923", color: "white", fontWeight: "bold", fontSize: "18px"}}
+                  <StyledTableCell key={day.getDay()} align="center"
+                  style={day.getDay() === 0 || day.getDay() === 6 ? {backgroundColor: 'rgba(240, 115, 32, 0.6)', fontWeight: "bold"} : {backgroundColor: "#6A4923", color: "white", fontWeight: "bold"}}
                     >
                     {weekDay[day.getDay()]}
-                  </TableCell>
+                  </StyledTableCell>
                 );
               })}
               </TableRow>
@@ -75,12 +90,12 @@ export default function StickyHeadTable() {
                 {row.days.map((day, index) => { 
                   const date = new Date(day.dateKey);
                   return (
-                  <TableCell
+                  <StyledTableCell 
                     key={index} 
                     style={date.getDay() === 0 || date.getDay() === 6 ? {backgroundColor: 'rgba(253, 241, 203, 1)'} : {}}
                   >
                     {day.metrics.value} 
-                  </TableCell>
+                  </StyledTableCell>
                 )})}
               </TableRow>
             ))}
@@ -97,5 +112,7 @@ export default function StickyHeadTable() {
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
     </Paper>
+    </div>
+    
   );
 }

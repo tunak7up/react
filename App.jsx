@@ -8,17 +8,19 @@ import StickyHeadTable from './components/StickyHeadTable';
 function App() {
 
   return (
-    <>
-    <header className="app-header">
-      <span>Tổng quan tuyến bán hàng 2025</span>
-      <span style={{fontSize: '1.2rem', fontWeight: 400}}>DVT: Triệu đồng</span>
-    </header>
-      <SelectBar />
-      <div style={{display: 'flex', gap: '1rem', flexWrap: 'nowrap', justifyContent: 'center'}}>
-        <CustomizedTables />
-        <StickyHeadTable />
+    <div>
+      <header className="app-header">
+        <span style={{fontSize: '1.5rem', fontWeight: 600}}>Tổng quan tuyến bán hàng 2025</span>
+        <span style={{fontSize: '1.2rem', fontWeight: 400}}>DVT: Triệu đồng</span>
+      </header>
+      <div style={{maxHeight: '70vh', overflowY: 'scroll'}}>
+          <SelectBar />        
+        <div className='twoTable' style={{display: 'flex', flexWrap: 'nowrap', justifyContent: 'center', overflowY: 'scroll-y'}}>
+          <CustomizedTables />
+          <StickyHeadTable />
+        </div>
       </div>
-    </>
+    </div>      
   )
 }
 

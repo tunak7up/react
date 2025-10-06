@@ -7,8 +7,8 @@ export default function YearMonthPicker() {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <div style={{ display: 'flex', gap: '1rem' }}>
-        <DatePicker label="Tháng" views={['month']} />
-        <DatePicker label="Năm" views={['year']} />        
+        <DatePicker sx={{ maxWidth:'30%' }} label="Tháng" views={['month']} />
+        <DatePicker sx={{ maxWidth:'30%' }} label="Năm" views={['year']} />        
       </div>
     </LocalizationProvider>
   );

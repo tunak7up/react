@@ -6,7 +6,7 @@ import NativeSelect from '@mui/material/NativeSelect';
 
 function NativeSelectDemo({ label, name, options, defaultValue }) {
   return (
-    <Box sx={{ minWidth:'100px', margin: '1rem' }}>
+    <Box sx={{ minWidth:'10%', margin: '1rem' }}>
       <FormControl fullWidth>
         <InputLabel variant="standard" htmlFor={`native-${name}`}>
           {label}

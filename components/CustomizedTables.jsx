@@ -15,16 +15,16 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     backgroundColor: "#6A4923",
     color: theme.palette.common.white,
     fontWeight: "bold",
-    fontSize: "18px",
-     height: 52,
-     paddingTop: 0,
-     paddingBottom: 0,
+    fontSize: "1rem",
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
   },
   [`&.${tableCellClasses.body}`]: {
-    fontSize: 14,
-     height: 52,
-     paddingTop: 0,
-     paddingBottom: 0,
+    fontSize: "1rem",
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
   },
 }));
 
@@ -88,10 +88,12 @@ export default function CustomizedTables() {
   }, [data.rows]);
   
   return (
-    <div>      
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 700 }} aria-label="customized table">
-          <TableHead style={{height: '114px'}}>
+    <div className='customized-table'>      
+      <TableContainer 
+      // component={Paper}
+      >
+        <Table sx={{ minWidth:'50%' }} aria-label="customized table">
+          <TableHead style={{ height: '11.2vh' }}>
             <TableRow>
               <StyledTableCell>Nội dung</StyledTableCell>
               <StyledTableCell>KPI</StyledTableCell>
@@ -123,7 +125,8 @@ export default function CustomizedTables() {
                     rowSpan={row.kpiRowSpan}
                     style={{ 
                       fontWeight: '500',
-                      verticalAlign: 'middle'
+                      verticalAlign: 'middle',
+                      whiteSpace: 'wrap',
                     }}
                   >
                     {row.kpi}
