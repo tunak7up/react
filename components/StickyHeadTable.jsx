@@ -63,7 +63,7 @@ export default function StickyHeadTable() {
       <Paper sx={{ width: "100%", overflow: "hidden" }}>
       <TableContainer>
         <Table stickyHeader aria-label="sticky table">
-          <TableHead style={{ maxHeight: '10vh' }}>
+          <TableHead style={{ maxHeight: '112px' }}>
             <TableRow>
               {daysIn2025Sep.map((day) => (
                 <StyledTableCell style={{backgroundColor:"#6A4923", color: "white", fontWeight: "bold"}} key={day.getDate()} align="center" colSpan={1}>

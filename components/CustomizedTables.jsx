@@ -93,7 +93,7 @@ export default function CustomizedTables() {
       // component={Paper}
       >
         <Table sx={{ minWidth:'50%' }} aria-label="customized table">
-          <TableHead style={{ height: '11.2vh' }}>
+          <TableHead className='customizedTableHead' style={{ height: '113.4px' }}>
             <TableRow>
               <StyledTableCell>Nội dung</StyledTableCell>
               <StyledTableCell>KPI</StyledTableCell>
